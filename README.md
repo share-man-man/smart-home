@@ -1,7 +1,7 @@
 # grain-full-personal
 
 ### 项目演示地址
-[智能家居app演示地址](http://shuxiaoman.gitee.io/grain-full-personal/).
+[智能家居app演示地址](http://shuxiaoman.gitee.io/smart-home/).
 
 ## 安装依赖包：需要设置成淘宝的镜像才能下载
 ```

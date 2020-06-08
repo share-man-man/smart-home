@@ -58,8 +58,6 @@ import LivingRoom from "../components/LivingRoom";
 import BedRoom from "../components/BedRoom";
 import BathRoom from "../components/BathRoom";
 
-import icon from "publicPath/smart-home.png";
-
 export default {
   name: "HomePage",
   components: {
@@ -83,8 +81,7 @@ export default {
         { name: "Going Out", active: false, icon: "#icon-go-out" },
         { name: "Sleeping", active: false, icon: "#icon-sleep" },
         { name: "Napping", active: false, icon: "#icon-chair" }
-      ],
-      testIcon: icon
+      ]
     };
   },
   mounted() {},

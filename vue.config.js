@@ -11,7 +11,7 @@ module.exports = {
     process.env.NODE_ENV === "development"
       ? "/"
       : process.env.VUE_APP_PAGES === "gitee"
-      ? "/grain-full-personal/"
+      ? "/smart-home/"
       : "/",
   //开发环境生成MapSource文件以调试断点
   productionSourceMap: process.env.NODE_ENV === "development",
