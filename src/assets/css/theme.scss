@@ -1,0 +1,87 @@
+//字体
+$ruler: 16px;
+
+//新拟物风格样式
+$GrainFullRuler:16px;
+$GrainFullBackgroundColor:#f3f4f8;/*背景颜色*/
+$GrainFullFontSize:$GrainFullRuler/2;/*字体大小*/
+$GrainFullFontFamily:'Montserrat', sans-serif;/*字体*/
+//$GrainFullWidth: $GrainFullRuler*2; /*宽*/
+//$GrainFullHeight: $GrainFullRuler; /*高*/
+$GrainFullAngle: 125deg;/*渐变角度*/
+$GrainFullTextColor: #8b8da0;/*文本颜色*/
+$GrainFullTextShadowColor:#fff;/*文本阴影颜色*/
+//$GrainFullDarkColor: #dadbdf;/*暗部颜色*/
+//$GrainFullLightColor: #ffffff;/*高亮颜色*/
+$GrainFullFirstGradientColor: #fdfdfd;/*背景第一梯度颜色*/
+$GrainFullSecondGradientColor: #e0e3ec;/*背景第二梯度颜色*/
+$GrainFullMainColor: #52dea5;/*主色调*/
+
+$GrainFullSwitchClickBackGroundColor:#dfe7f4;/*开关背景颜色*/
+$GrainFullSwitchClickOnBackGroundColor:$GrainFullMainColor;/*激活背景颜色*/
+$GrainFullSwitchClickNodeBackGroundColor:#eff0f5;/*开关颜色*/
+
+@mixin neumorphism-default{
+  text-shadow: 1px 1px 0 $GrainFullTextShadowColor;
+  text-align: center;
+  font-family: $GrainFullFontFamily;
+  font-size: $GrainFullFontSize;
+  color: $GrainFullTextColor;
+  background-color: $GrainFullBackgroundColor;
+  transition: all .5s ease-in-out;
+}
+//凸曲面
+@mixin neumorphism-convex ($radius,$x,$y,$blur,$darkColor,$lightColor){
+  //@include neumorphism-default;
+  border-radius: $radius;
+  background: linear-gradient($GrainFullAngle, $GrainFullFirstGradientColor, $GrainFullSecondGradientColor);
+  box-shadow: $x $y $blur $darkColor, (-$x) (-$y) $blur $lightColor;
+}
+//凹曲面
+@mixin neumorphism-concave ($radius,$x,$y,$blur,$darkColor,$lightColor){
+  //@include neumorphism-default;
+  border-radius: $radius;
+  background: linear-gradient($GrainFullAngle, $GrainFullSecondGradientColor, $GrainFullFirstGradientColor);
+  box-shadow: $x $y $blur $darkColor, (-$x) (-$y) $blur $lightColor;
+}
+//凸平面
+@mixin neumorphism-flat ($radius,$x,$y,$blur,$darkColor,$lightColor){
+  //@include neumorphism-default;
+  border-radius: $radius;
+  box-shadow: $x $y $blur $darkColor, (-$x) (-$y) $blur $lightColor;
+}
+//凹平面
+@mixin neumorphism-pressed ($radius,$x,$y,$blur,$darkColor,$lightColor){
+  //@include neumorphism-default;
+  border-radius: $radius;
+  box-shadow:inset $x $y $blur $darkColor,inset (-$x) (-$y) $blur $lightColor;
+}
+
+@mixin neumorphism($type:'convex',$size:70px,$radius:20px,$distance:7px,$intensity:0.17,$blur:14px){
+  @if($type == 'convex'){
+    @include neumorphism-convex($radius,$distance,$distance,$blur,($GrainFullBackgroundColor*(1-$intensity)),($GrainFullBackgroundColor/(1-$intensity)))
+  }
+  @if($type == 'concave'){
+    @include neumorphism-concave($radius,$distance,$distance,$blur,($GrainFullBackgroundColor*(1-$intensity)),($GrainFullBackgroundColor/(1-$intensity)))
+  }
+  @if($type == 'flat'){
+    @include neumorphism-flat($radius,$distance,$distance,$blur,($GrainFullBackgroundColor*(1-$intensity)),($GrainFullBackgroundColor/(1-$intensity)))
+  }
+  @if($type == 'pressed'){
+    @include neumorphism-pressed($radius,$distance,$distance,$blur,($GrainFullBackgroundColor*(1-$intensity)),($GrainFullBackgroundColor/(1-$intensity)))
+  }
+}
+
+/* 全局过渡动画 */
+.grain-full-slide-fade-enter-active {
+  /*transition: all 0.3s ease;*/
+  animation: bounce-in .3s ease;
+}
+.grain-full-slide-fade-leave-active {
+  /*transition: all 0.3s ease;*/
+  animation: bounce-in .3s ease reverse;
+}
+.grain-full-slide-fade-enter, .grain-full-slide-fade-leave-to{
+  /*transform: translateY(100%);*/
+  /*opacity: 0;*/
+}
